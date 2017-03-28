@@ -2,7 +2,7 @@ package global;
 
 //import
 import mysql.Mysqlsql;
-import http.HttpRequest;
+import http.Http;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,7 @@ public class CoinList {
     //great object
     Mysqlconnector mysqlconnector = new Mysqlconnector();
     MysqlError mysqlerror = new MysqlError();
-    HttpRequest httprequest = new HttpRequest();
+    Http httprequest = new Http();
     FileSystem filesystem = new FileSystem();
 
     //private
@@ -35,26 +35,19 @@ public class CoinList {
      *
      */
     public void GetCoinList() {
-        try {
-            this.config = filesystem.readFile("coinlist.txt");
-
-            //get response
-            System.out.println(httprequest.GetHttp(config));
-            JSONArray response = new JSONArray(httprequest.GetHttp(config));
-
-            for (int i = 0; i < response.length(); i++) {
-
-                /*String coinTag;
-                coinTag = response[i].getString("symbol");*/
-                JSONObject jsonObject = response.getJSONObject(i);
-                String coinTag = jsonObject.getString("symbol");
-                System.out.println(jsonObject.getString("symbol"));
-
-                //geef coinTag door aan de methode die na kijkt of de coin in de trade database lijst staat
-                DBCheck(coinTag);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(CoinList.class.getName()).log(Level.SEVERE, null, ex);
+        this.config = filesystem.readFile("coinlist.txt");
+        System.out.println(httprequest.GetHttp(config));
+        JSONArray response = new JSONArray(httprequest.GetHttp(config));
+        for (int i = 0; i < response.length(); i++) {
+            
+            /*String coinTag;
+            coinTag = response[i].getString("symbol");*/
+            JSONObject jsonObject = response.getJSONObject(i);
+            String coinTag = jsonObject.getString("symbol");
+            System.out.println(jsonObject.getString("symbol"));
+            
+            //geef coinTag door aan de methode die na kijkt of de coin in de trade database lijst staat
+            DBCheck(coinTag);
         }
     }
 

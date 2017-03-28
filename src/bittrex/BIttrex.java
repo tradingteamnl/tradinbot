@@ -5,6 +5,18 @@
  */
 package bittrex;
 
+//import
+import global.DatumCheck;
+import global.Time;
+import org.json.JSONObject;
+import org.json.JSONArray;
+import http.HttpRequest;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import mysql.Mysqlconnector;
+
 /**
  *
  * @author Jaros
