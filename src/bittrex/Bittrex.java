@@ -10,7 +10,7 @@ import global.DatumCheck;
 import global.Time;
 import org.json.JSONObject;
 import org.json.JSONArray;
-import http.HttpRequest;
+import http.Http;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -21,6 +21,6 @@ import mysql.Mysqlconnector;
  *
  * @author Jaros
  */
-public class BIttrex {
+public class Bittrex {
     
 }
