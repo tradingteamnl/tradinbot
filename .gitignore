@@ -62,5 +62,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 /nbproject/private/
+/build/
 *.xml
 nbproject/build-impl.xml
+*.md

@@ -27,7 +27,7 @@ public class MysqlError {
         }
         
         //stuur message door naar de save methode
-        filesystem.saveFile("know", message);
+        //filesystem.saveFile("know", message);
     }
     
     private void saveSQL (String sql){
@@ -38,6 +38,6 @@ public class MysqlError {
         String fileData = readFile +"\n\n"+ sql;
         
         //stuur het nieuwe sql bestand naar de opslaan method
-        filesystem.saveFile(fileName, fileData);
+        //filesystem.saveFile(fileName, fileData);
     }
 }
