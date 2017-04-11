@@ -21,7 +21,6 @@ public class Http {
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             String strTemp = "";
             while (null != (strTemp = br.readLine())) {
-                System.out.println(strTemp);
                 return strTemp;
             }
         } catch (Exception ex) {
