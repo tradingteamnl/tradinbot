@@ -7,10 +7,10 @@ package drivers;
 
 //import
 import global.FileSystem;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import org.json.JSONObject;
 
 /**
  *
@@ -28,15 +28,19 @@ public class Drivers {
         //laat config bestand;
         String config = filesystem.readConfig();
         
+        //request url
+        final String BITTREX_BASIS_URL = new JSONObject(config).getJSONObject("bittrex").getString("basisUrl");
         
         //Great drivers
-        BittrexDrivers bittrexdrivers = new BittrexDrivers(config);
+        BittrexDrivers bittrexdrivers = new BittrexDrivers(config, BITTREX_BASIS_URL);
+        AnalytisDrivers analyticsDrivers = new AnalytisDrivers(config, BITTREX_BASIS_URL);
         
         TimerTask task = new TimerTask() {
 
             @Override
             public void run() {
                bittrexdrivers.start();
+               analyticsDrivers.start();
             }
         };
         
