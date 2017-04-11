@@ -36,12 +36,17 @@ public class BittrexMarketRequest {
     private final String PASSWORD = mysqlconnector.getPassword();
     private final String CONN_STRING = mysqlconnector.getUrlmysql();
     private int datumIddatum;
-    private final String slaMarktDataOp;
+    private final String slaMarktDataOp, BITTREX_BASIS_URL;
     
     
-    
-    public BittrexMarketRequest(String config) {
+    /**
+     * @param config
+     * @param BITTREX_BASIS_URL 
+     */
+    public BittrexMarketRequest(String config, String BITTREX_BASIS_URL) {
+        System.out.println(new JSONObject(config).getJSONObject("bittrex"));
         this.slaMarktDataOp = new JSONObject(config).getJSONObject("bittrex").getString("slamarktdataop");
+        this.BITTREX_BASIS_URL = BITTREX_BASIS_URL;
     }
 
     /**

@@ -28,7 +28,7 @@ public class BittrexDrivers {
     public BittrexDrivers(String CONFIG) {
         this.CONFIG = CONFIG;
         this.BITTREX_BASIS_URL = new JSONObject(CONFIG).getJSONObject("bittrex").getString("basisUrl");
-        this.MARKT_REQUEST= new BittrexMarketRequest(CONFIG);
+        this.MARKT_REQUEST= new BittrexMarketRequest(CONFIG, BITTREX_BASIS_URL);
     }
     
     /**
