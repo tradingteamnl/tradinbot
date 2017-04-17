@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package poloniex;
-
+package bittrex;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,14 +13,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import security.EncryptionUtility;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import global.FileSystem;
 import org.json.JSONObject;
-import security.EncryptionUtility;
 
-public class PoloniexProtocall {
+public class BittrexProtocall {
 
     public static final String ORDERBOOK_BUY = "buy", ORDERBOOK_SELL = "sell", ORDERBOOK_BOTH = "both";
     private static final Exception InvalidStringListException = new Exception("Must be in key-value pairs");
@@ -36,11 +35,12 @@ public class PoloniexProtocall {
     FileSystem filesystem = new FileSystem();
     
     /**
-     * Constructiir
+     * Constuctor
      * @param apikey
      * @param secret 
      */
-    public PoloniexProtocall() {
+    public BittrexProtocall() {
+        System.out.println(filesystem.readFile("config.json"));
         this.bittrexConfig = new JSONObject(filesystem.readFile("config.json")).getJSONObject("bittrex");
         this.apikey = bittrexConfig.getString("apikey");
         this.secret = bittrexConfig.getString("apisecretkey");

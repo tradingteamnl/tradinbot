@@ -24,6 +24,7 @@ public class Drivers {
         //great object filesystem
         FileSystem filesystem = new FileSystem();
         
+        //terminalSpawn.command("lol");
         
         //laat config bestand;
         String config = filesystem.readConfig();

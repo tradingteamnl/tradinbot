@@ -5,10 +5,14 @@
  */
 package drivers;
 
+import bittrex.BittrexBalance;
 import bittrex.BittrexMarketRequest;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONObject;
 
 /**
@@ -16,6 +20,10 @@ import org.json.JSONObject;
  * @author michel
  */
 public class BittrexDrivers {
+
+    //maak object
+    BittrexBalance bittrexbalance = new BittrexBalance();
+
     //private
     private final String CONFIG, BITTREX_BASIS_URL;
     private final BittrexMarketRequest MARKT_REQUEST;
@@ -40,6 +48,12 @@ public class BittrexDrivers {
             @Override
             public void run() {
                 MARKT_REQUEST.marketRequest();
+                try {
+                    bittrexbalance.balance();
+                } catch (SQLException ex) {
+                    System.err.println("Bittrex balance kan niet worden opgevraagd.");
+                }
+
             }
         };
 

@@ -57,7 +57,7 @@ public class BittrexMarketRequest {
         try {
             conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             Statement stmt = (Statement) conn.createStatement();
-            String uri = "https://bittrex.com/api/v1.1/public/getmarketsummaries";
+            String uri = BITTREX_BASIS_URL+"/public/getmarketsummaries";
 
             //vul datum id in 
             this.datumIddatum = datumcheck.datumCheck();

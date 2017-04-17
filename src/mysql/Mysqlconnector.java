@@ -14,7 +14,7 @@ public class Mysqlconnector {
     private final String PASSWORD = "Pulsar11";
     private final String IPADDRESS = "localhost";
     private final String POORT = "3306";
-    private final String DATABASENAAM = "cryptodata3_0";
+    private final String DATABASENAAM = "bigdata";
     private final boolean AUTORECONNECT = true;
     private final boolean SSL = false;
   
@@ -39,7 +39,7 @@ public class Mysqlconnector {
     private final String PASSWORDSECONDE = "Pulsar11";
     private final String IPADDRESSSECONDE = "localhost";
     private final String POORTSECONDE = "3306";
-    private final String DATABASENAAMSECONDE = "cryptodata3_0";
+    private final String DATABASENAAMSECONDE = "bigdata";
     private final boolean AUTORECONNECTSECONDE = true;
     private final boolean SSLSECONDE = false;
     

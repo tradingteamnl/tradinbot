@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Security;
+package security;
 
+//import
 import java.io.UnsupportedEncodingException;
 import java.security.*;
 import java.util.Base64;
@@ -94,3 +95,4 @@ public class EncryptionUtility {
     }
 
 }
+
