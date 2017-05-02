@@ -36,8 +36,9 @@ public class SetOrder {
         try {
 
             //Haalt de order balance op
-            JSONArray arrayList = new JSONArray(orderRoom());
-            for (int i = 0; i < arrayList.length(); i++) {
+            JSONArray arrayList = orderRoom();
+            System.out.println(arrayList);
+            /*for (int i = 0; i < arrayList.length(); i++) {
 
                 String exchange = arrayList.getJSONObject(i).getString("exchange");
                 String markt = arrayList.getJSONObject(i).getString("markt");
@@ -69,7 +70,7 @@ public class SetOrder {
                 } else {
                     System.err.println("De verkoop optie is niet bekend");
                 }
-            }
+            }*/
             //software plaats de order
             //software save het uuid
         } catch (SQLException ex) {
@@ -107,21 +108,20 @@ public class SetOrder {
             object.put("exchange", rs.getString("exchange"));
             object.put("markt", rs.getString("markt"));
             object.put("type", rs.getString("type"));
-            object.put("minprijs", rs.getDouble("minprijs"));
+            //object.put("minprijs", rs.getDouble("minprijs"));
             object.put("maxprijs", rs.getDouble("maxprijs"));
-            object.put("maxvolueperorder", rs.getDouble("maxvolueperorder"));
-            object.put("maincoin", rs.getString("maincoin"));
+            //object.put("maxvolueperorder", rs.getDouble("maxvolueperorder"));
+            object.put("maincoin", rs.getString("maincoin"));            
             object.put("seccoin", rs.getString("seccoin"));
 
             //kijk welke markt optie er is
-            if ("buy".equals(rs.getString("buy"))) {
+            if ("buy".equals(rs.getString("type"))) {
                 object.put("maxammount", rs.getDouble("maxammount"));
             } else if ("sell".equals(rs.getString("type"))) {
-                object.put("minhold", rs.getDouble("minhold"));
+                object.put("minhold", rs.getDouble("minholding"));
             } else {
                 System.err.println("Er is een probleem bij setOrder dat het type niet bekend is.");
             }
-
             //vol array
             array.put(object);
         }

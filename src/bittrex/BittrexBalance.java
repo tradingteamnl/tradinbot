@@ -70,24 +70,20 @@ public class BittrexBalance {
                 + "balance=" + balance + " AND pending=" + pending + " AND available=" + available + "";
 
         ResultSet rs = stmt.executeQuery(SQLCount);
-        System.out.println(SQLCount);
 
         int count = 0;
         while (rs.next()) {
             count = rs.getInt("total");
         }
 
-        System.out.println(count);
         if (count == 0) {
-            System.out.println("software in count if");
             String SQLCount2 = "SELECT COUNT(*) AS total FROM balance WHERE exchange='bittrex' AND cointag='" + coinTag + "';";
-            System.out.println(SQLCount2);
             ResultSet rs1 = stmt.executeQuery(SQLCount2);
             int count2 = 0;
             while (rs1.next()) {
                 count2 = rs1.getInt("total");
             }
-            System.out.println("count2 " + count2);
+            
             if (count2 == 1) {
 
                 String SQLUpdate = "UPDATE balance SET balance=" + balance + ", pending=" + pending + ", available=" + available + ""

@@ -37,7 +37,8 @@ public class Drivers {
             public void run() {
                 setOrder.orderSystem();
                 bittrexdrivers.start();
-                analyticsDrivers.start();
+                //analyticsDrivers.start();
+                setOrder.orderSystem();
             }
         };
 
