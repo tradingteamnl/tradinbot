@@ -1,7 +1,7 @@
 package global;
 
 //import
-import mysql.Mysqlsql;
+import mysql.MysqlSql;
 import http.Http;
 import java.io.IOException;
 import java.sql.Connection;
