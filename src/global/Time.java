@@ -26,8 +26,8 @@ public class Time {
     /**
      * @return timestamp in string 
      */
-    public String getTimeStamp(){
-        return String.valueOf(timeStamp());
+    public int getTimeStamp(){
+        return (int) timeStamp();
     }
     
     /**
