@@ -184,7 +184,7 @@ public class OrderBook {
         System.out.println("Run order book analytics");
 
         //hier word exchange en mart + timestamp in het database gezet zodat je later via een update sql String de handel goed kan vullen
-        String timestamp = time.getTimeStamp();
+        int timestamp = time.getTimeStamp();
         String exchange = dataAnalytics.getString("bittrex");
         String markt = dataAnalytics.getString("markt");
         String beginSQL = "INSERT INTO marktanalyticshistory (timestamp, exchange, markt) VALUES (" + timestamp + "," + exchange + ", " + markt + ");";
