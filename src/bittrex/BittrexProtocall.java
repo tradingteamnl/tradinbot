@@ -40,13 +40,12 @@ public class BittrexProtocall {
      * @param secret 
      */
     public BittrexProtocall() {
-        System.out.println(filesystem.readFile("config.json"));
         this.bittrexConfig = new JSONObject(filesystem.readFile("config.json")).getJSONObject("bittrex");
         this.apikey = bittrexConfig.getString("apikey");
         this.secret = bittrexConfig.getString("apisecretkey");
     }
 
-    public void setAuthKeysFromTextFile(String textFile) { // Add the text file containing the key & secret in the same path as the source code
+    public void setAuthKeysFromTextFile(String textFile) {
 
         try (Scanner scan = new Scanner(getClass().getResourceAsStream(textFile))) {
 
