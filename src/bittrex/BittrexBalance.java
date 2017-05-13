@@ -66,7 +66,7 @@ public class BittrexBalance {
         Statement stmt = (Statement) conn.createStatement();
 
         //SQL count
-        String SQLCount = "SELECT COUNT(*) AS total FROM balance WHERE exchange='bittrex' AND cointag='" + coinTag + "' AND "
+        String SQLCount = "SELECT COUNT(*) AS total FROM balance WHERE handelsplaats='bittrex' AND cointag='" + coinTag + "' AND "
                 + "balance=" + balance + " AND pending=" + pending + " AND available=" + available + "";
 
         ResultSet rs = stmt.executeQuery(SQLCount);
@@ -77,7 +77,7 @@ public class BittrexBalance {
         }
 
         if (count == 0) {
-            String SQLCount2 = "SELECT COUNT(*) AS total FROM balance WHERE exchange='bittrex' AND cointag='" + coinTag + "';";
+            String SQLCount2 = "SELECT COUNT(*) AS total FROM balance WHERE handelsplaats='bittrex' AND cointag='" + coinTag + "';";
             ResultSet rs1 = stmt.executeQuery(SQLCount2);
             int count2 = 0;
             while (rs1.next()) {
@@ -87,11 +87,11 @@ public class BittrexBalance {
             if (count2 == 1) {
 
                 String SQLUpdate = "UPDATE balance SET balance=" + balance + ", pending=" + pending + ", available=" + available + ""
-                        + " WHERE exchange='bittrex' AND cointag='" + coinTag + "';";
+                        + " WHERE handelsplaats='bittrex' AND cointag='" + coinTag + "';";
                 System.out.println(SQLUpdate);
                 stmt.execute(SQLUpdate);
             } else {
-                String SQLQuery = "INSERT INTO balance (exchange, cointag, balance, available, pending)"
+                String SQLQuery = "INSERT INTO balance (handelsplaats, cointag, balance, available, pending)"
                         + " VALUES ('bittrex', '" + coinTag + "', " + balance + ", " + available + "," + pending + ");";
                 stmt.execute(SQLQuery);
                 System.out.println(SQLQuery);
