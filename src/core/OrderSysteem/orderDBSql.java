@@ -36,7 +36,7 @@ public class OrderDBSql {
         }
 
         //kijk of het goed is gegaan
-        String addSql = "INSERT INTO orderID (markt, orderID, totaal, remaning, prijs, exchange, prioritijd, status, updateTime)"
+        String addSql = "INSERT INTO openOrders (markt, orderID, totaal, remaning, prijs, exchange, prioritijd, status, updateTime)"
                 + "VALUES ('" + markt + "', '" + orderID + "', '" + totaal + "', '" + remaning + "', '" + prijs + "', 'bittrex', '" + prio + "', '" + status + "', " + timeStamp + "');";
         boolean mysqlResponse = mysqlSql.mysqlStament(addSql);
 
@@ -62,7 +62,7 @@ public class OrderDBSql {
         String exchange = "bittrex";
 
         //Update String
-        String updateString = "UPDATE set remaning='" + remaning + "', updateTime='" + timeStamp + "'";
+        String updateString = "UPDATE openOrders set remaning='" + remaning + "', updateTime='" + timeStamp + "'";
 
         if (remaning != 0) {
             updateString += ", status='pending'";
