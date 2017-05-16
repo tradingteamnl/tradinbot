@@ -16,17 +16,18 @@ public class BestePrijs2_0 {
      *
      * @param handelsplaats De exchange.
      * @param markt De markt.
-     * @param type buy or sell.
+     * @param type buy or sell. 
+     * @param DBprijs de prijs die in het db staat
      * @return De beste prijs.
      */
-    public double getBestPrijs(String handelsplaats, String markt, String type) {
+    public double getBestPrijs(String handelsplaats, String markt, String type, double DBprijs) {
         try {
             switch (type) {
                 case "buy":
                     //roep methoden aan en return het stament
-                    return bestBuyPrijs(handelsplaats, markt);
+                    return bestBuyPrijs(handelsplaats, markt, DBprijs);
                 case "sell":
-                    return bestSellPrijs(handelsplaats, markt);
+                    return bestSellPrijs(handelsplaats, markt, DBprijs);
                 default:
                     return 00.00;
             }
@@ -43,13 +44,18 @@ public class BestePrijs2_0 {
      * @return De beste prijs voor buy.
      * @throws SQLException als de software het niet doet.
      */
-    private double bestBuyPrijs(String handelsplaats, String markt) throws SQLException {
+    private double bestBuyPrijs(String handelsplaats, String markt, double DBprijs) throws SQLException {
 
         //request data uit het database
         ResultSet rs = mysqlSql.mysqlSelectStament("SELECT Bid FROM marktdata WHERE handelsplaats='" + handelsplaats + "'");
         while (rs.next()) {
             double prijs = rs.getDouble("Bid") + 0.00000001;
-            return prijs;
+            
+            if(prijs < DBprijs){
+                return prijs;
+            } else {
+                return DBprijs;
+            }
         }
         return 00.00;
     }
@@ -61,12 +67,17 @@ public class BestePrijs2_0 {
      * @return De beste prijs voor sell.
      * @throws SQLException als de software het niet doet.
      */
-    private double bestSellPrijs(String handelsplaats, String markt) throws SQLException {
+    private double bestSellPrijs(String handelsplaats, String markt, double DBprijs) throws SQLException {
 
         ResultSet rs = mysqlSql.mysqlSelectStament("SELECT Ask FROM marktdata WHERE handelsplaats='" + handelsplaats + "'");
         while (rs.next()) {
             double prijs = rs.getDouble("Ask") - 0.00000001;
-            return prijs;
+            
+            if(prijs > DBprijs){
+                return prijs;
+            } else {
+                return DBprijs;
+            }
         }
         return 00.00;
     }
