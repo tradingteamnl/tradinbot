@@ -1,5 +1,6 @@
 package tradingbot;
 
+import global.FileSystem;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import mysql.MysqlSql;
@@ -11,7 +12,22 @@ import org.json.JSONObject;
  */
 public class SetOrder2_0 {
 
+    //object
     MysqlSql mysqlSql = new MysqlSql();
+    BestePrijs2_0 bestePrijs = new BestePrijs2_0();
+
+    //private
+    private double bittrexFee;
+
+    //constructor
+    public SetOrder2_0() {
+        //fileSystem object word gemaakt
+        FileSystem fileSystem = new FileSystem();
+
+        //vul object met bittrex config
+        JSONObject bittrex = new JSONObject(fileSystem.readConfig()).getJSONObject("bittrex");
+        this.bittrexFee = bittrex.getDouble("fee");
+    }
 
     public void run() {
         try {
