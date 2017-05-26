@@ -99,6 +99,24 @@ public class BittrexProtocall {
 
         return getJson(API_VERSION, MARKET, "buylimit", returnCorrectMap("market", market, "quantity", quantity, "rate", rate));
     }
+    
+    /**
+     * @see Double enz word omgezet
+     * @param market handels plaats
+     * @param quantityDouble de hoeveelheid
+     * @param prijsDouble de prijs
+     * @return 
+     */
+    public String buyLimitv2(String market, double quantityDouble, double prijsDouble){
+        
+        //convert alles to string
+        String quantity = Double.toString(quantityDouble);
+        String rate = Double.toString(prijsDouble);
+        
+        //String market, String quantity, String rate
+        return getJson(API_VERSION, MARKET, "buylimit", returnCorrectMap("market", market, "quantity", quantity, "rate", rate));    
+    }
+    
 
     public String buyMarket(String market, String quantity) { // Places a market buy in a specific market; returns the UUID of the order
 
