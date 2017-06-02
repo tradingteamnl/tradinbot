@@ -1,5 +1,6 @@
 package bittrex;
 
+import ExchangeConstroller.BittrexProtocall;
 import global.Time;
 import java.sql.Connection;
 import java.sql.DriverManager;

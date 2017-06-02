@@ -1,12 +1,10 @@
 package drivers;
 
 //import
+import ExchangeConstroller.BittrexProtocall;
 import global.FileSystem;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import org.json.JSONObject;
-import tradingbot.SetOrder;
+import tradingbot.SetOrder2_0;
 
 /**
  *
@@ -18,15 +16,17 @@ public class Drivers {
 
         //great object filesystem
         FileSystem filesystem = new FileSystem();
-        SetOrder setOrder = new SetOrder();
-
+        SetOrder2_0 setOrder = new SetOrder2_0();
+        OrderSysteem orderSysteem = new OrderSysteem();
+        
+        
         //laat config bestand;
         String config = filesystem.readConfig();
 
         //request url
         final String BITTREX_BASIS_URL = new JSONObject(config).getJSONObject("bittrex").getString("basisUrl");
 
-        //Great drivers
+        //object maken
         BittrexDrivers bittrexdrivers = new BittrexDrivers(config, BITTREX_BASIS_URL);
         AnalytisDrivers analyticsDrivers = new AnalytisDrivers(config, BITTREX_BASIS_URL);
 

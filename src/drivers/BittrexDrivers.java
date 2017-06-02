@@ -7,7 +7,7 @@ package drivers;
 
 import bittrex.BittrexBalance;
 import bittrex.BittrexMarketRequest;
-import bittrex.BittrexProtocall;
+import ExchangeConstroller.BittrexProtocall;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Timer;
