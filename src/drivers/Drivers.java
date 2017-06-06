@@ -27,18 +27,21 @@ public class Drivers {
         final String BITTREX_BASIS_URL = new JSONObject(config).getJSONObject("bittrex").getString("basisUrl");
 
         //Great drivers
-        BittrexDrivers bittrexdrivers = new BittrexDrivers(config, BITTREX_BASIS_URL);
-        AnalytisDrivers analyticsDrivers = new AnalytisDrivers(config, BITTREX_BASIS_URL);
+        //BittrexDrivers bittrexdrivers = new BittrexDrivers(config, BITTREX_BASIS_URL);
+        //AnalytisDrivers analyticsDrivers = new AnalytisDrivers(config, BITTREX_BASIS_URL);
 
         //reload
         TimerTask task = new TimerTask() {
 
             @Override
             public void run() {
-                setOrder.orderSystem();
-                bittrexdrivers.start();
+                //bittrexdrivers.start();
                 //analyticsDrivers.start();
-                setOrder.orderSystem();
+                //setOrder.orderSystem();
+                
+                
+                
+                
             }
         };
 

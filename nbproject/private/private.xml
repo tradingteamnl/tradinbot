@@ -5,6 +5,11 @@
         <group name="trading">
             <file>file:/Users/michel/Desktop/tradinbot/src/bittrex/BittrexMarketRequest.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/Jaros/Documents/NetBeansProjects2/tradinbot/src/analytics/AverageCalculations.java</file>
+            <file>file:/C:/Users/Jaros/Documents/NetBeansProjects2/tradinbot/src/mysql/MysqlSql.java</file>
+            <file>file:/C:/Users/Jaros/Documents/NetBeansProjects2/tradinbot/src/bittrex/BittrexMarketRequest.java</file>
+            <file>file:/C:/Users/Jaros/Documents/NetBeansProjects2/tradinbot/src/analytics/GemiddeldeOpvragen.java</file>
+        </group>
     </open-files>
 </project-private>
